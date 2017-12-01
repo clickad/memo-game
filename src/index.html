@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Memo game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="js/script.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+
+      <div class = "header">
+        <div class = "options">
+          <label class = "level-label" for = "level">level: </label>
+          <select  class = "level" id = "level">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">5</option>
+          </select>
+          <button class = "start">START</button>
+        </div>
+        <div class = "counter">
+	        <!-- counter -->
+        </div>
+      </div>
+
+      <div class = "content">
+        <h2 class = "result correct">
+          Congratulations!
+        </h2>
+        <h2 class = "result wrong">
+          Sorry!
+        </h2>
+        <div class = "wrapper">
+          <div class = "start-boxes">
+            <!-- start boxes -->
+          </div>
+          <div class = "result-boxes ui-state-default">
+            <!-- result boxes -->
+          </div>
+          <h2 class = "start-text">
+            Choose level and click start!
+          </h2>
+          <p>
+ 	      You will see some images in particular order for limited time to memorize it. Then the images will be reordered and your task is to sort the images as they were before. Good luck!
+	        </p>
+        </div>
+        
+        <button class= "submit">submit</button>
+      </div>
+
+      <footer class = "footer">
+      </footer>
+
+    </div>
+  </body>
+</html>
