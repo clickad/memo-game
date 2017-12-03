@@ -17,14 +17,19 @@ $(document).ready(function(){
     var compareImages = [];
     var src, src2;
     var ct = 0;
-    $('.level').prop('selectedIndex',0); 
     var currentLevel = parseInt($('.level').val());
+    
+    function init(){
+      $('.level').prop('selectedIndex',0); 
+      $('.level').prop("disabled","true");
 
-    $( ".result-boxes" ).sortable({
-      placeholder: "highlight",
-      cursor: "move"
-    });
-    $( ".result-boxes" ).disableSelection();
+      $( ".result-boxes" ).sortable({
+        placeholder: "highlight",
+        cursor: "move"
+      });
+      $( ".result-boxes" ).disableSelection();
+    }
+    init();
 
     $('.level').on('change', function(){
       currentLevel = parseInt($(this).val());
@@ -111,7 +116,7 @@ $(document).ready(function(){
 
     function timer(){
       $('.start').prop("disabled","true");
-      $('.level').prop("disabled","true");
+      //$('.level').prop("disabled","true");
       $('.counter').css("opacity","1");
       $('.counter').html(sec);
       sec--;
@@ -119,7 +124,7 @@ $(document).ready(function(){
         clearInterval(count);
         sec = counter;
         $('.start').prop("disabled","");
-        $('.level').prop("disabled","");
+        //$('.level').prop("disabled","");
         setTimeout(function(){
           $('.counter').html('');
           $('.counter').css("opacity","0");
@@ -162,10 +167,10 @@ $(document).ready(function(){
       }else{
         $('.wrong').animate({"opacity":"1"},500);
         setTimeout(function(){
-          $('.wrong').animate({"opacity":"0"},500);
+          //$('.wrong').animate({"opacity":"0"},500);
           currentLevel = 1;
           $('.level').val(currentLevel);
-          $('.start').trigger('click');
+          //$('.start').trigger('click');
         },2000);  
       }
     }
