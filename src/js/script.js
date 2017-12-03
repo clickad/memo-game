@@ -126,7 +126,7 @@ $(document).ready(function(){
         $('.start').prop("disabled","");
         //$('.level').prop("disabled","");
         setTimeout(function(){
-          $('.counter').html('');
+          $('.counter').empty();
           $('.counter').css("opacity","0");
           setTimeout(function(){
             $('.submit').animate({"opacity":"1"},500);
@@ -181,8 +181,8 @@ $(document).ready(function(){
       $('.start-boxes').animate({"opacity":"1"},1000);
       $('.result-boxes').animate({"opacity":"0"},1000);
       $('.submit').animate({"opacity":"0"},500);
-      $('.start-boxes').html('');
-      $('.result-boxes').html('');
+      $('.start-boxes').empty();
+      $('.result-boxes').empty();
       $('.result').animate({"opacity":"0"},500);
       images = [];
       images = getRandom(allImages, boxes);
