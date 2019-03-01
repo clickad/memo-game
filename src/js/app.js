@@ -1,10 +1,10 @@
-(function(){
-  function getData() {
-    return $.getJSON('data.json');
+(()=>{
+  let getData = ()=> {
+    return $.getJSON('../src/data.json');
   }
-  $.when(getData()).then(function (data) {
-    var app = {
-      init: function(){
+  $.when(getData()).then((data)=> {
+    let app = {
+      init: function() {
         this.$level = $('.level');
         this.$submit = $('.submit');
         this.$start = $('.start');
@@ -38,7 +38,7 @@
         this.$start.on('click', this.startGame.bind(this));
         this.$submit.on('click', this.checkResult.bind(this));
       },
-      levelChange: function (level){
+      levelChange: function(level) {
         switch(level){
           case  1:
             this.boxes = 3;
@@ -64,8 +64,8 @@
             this.boxes = 3;
         }
       },
-      getRandom:  function (arr, count) {  // get random images from all images
-        var rand = arr.slice(0), i = arr.length, min = i - count, temp, index;
+      getRandom: function(arr, count) {  // get random images from all images
+        let rand = arr.slice(0), i = arr.length, min = i - count, temp, index;
         while (i-- > min) {
           index = Math.floor((i + 1) * Math.random());
           temp = rand[index];
@@ -74,8 +74,8 @@
         }
         return rand.slice(min);
       },
-      shuffle: function (array) { //sfuffle images
-        var currentIndex = array.length, temporaryValue, randomIndex;
+      shuffle: function(array) { //sfuffle images
+        let currentIndex = array.length, temporaryValue, randomIndex;
         while (0 !== currentIndex) {
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex -= 1;
@@ -85,34 +85,37 @@
         }
         return array;
       },
-      insertBox: function (){
-        for(var i = 0; i < this.finalImages.length; i++){
+      insertBox: function() {
+        for(let i = 0; i < this.finalImages.length; i++){
           this.$startBoxes.append(
-            '<div class = "box"><img src = "img/'+ this.finalImages[i]+'.png" alt = "image"></div>'
+            `<div class = "box">
+              <img src = "img/${this.finalImages[i]}.png" alt = "image">
+            </div>`
           );
         } 
       },
-      countDown: function (){
-        var self = this;
+      countDown: function() {
+        let self = this;
         this.resultImages = [];
         this.$startBoxes.animate({"opacity":"0"},1000);
-        setTimeout(function(){
+        setTimeout(()=>{
           self.$resultBoxes.animate({"opacity":"1"},1000);
         },1500);
-        $('.box').each(function(){
+        $('.box').each(function() {
           self.resultImages.push($(this).find('img').attr('src'));
         });
         this.resultImages = this.shuffle(this.resultImages);
-        for(var i = 0; i < this.resultImages.length; i++){
+        for(let i = 0; i < this.resultImages.length; i++){
           this.$resultBoxes.append(
-            '<div class = "box"><img src = "'+ this.resultImages[i] + '" alt = "image"></div>'
+            `<div class = "box">
+              <img src = "${this.resultImages[i]}" alt = "img">
+            </div>`
           );
         }
       },
-      timer: function (){
-        var self = this;
+      timer: function() {
+        let self = this;
         this.$start.prop("disabled","true");
-        //$('.level').prop("disabled","true");
         this.$counter.css("opacity","1");
         this.$counter.html(this.sec);
         this.sec--;
@@ -120,11 +123,10 @@
           clearInterval(this.count);
           this.sec = this.counter;
           this.$start.prop("disabled","");
-          //$('.level').prop("disabled","");
-          setTimeout(function(){
+          setTimeout(()=>{
             self.$counter.empty();
             self.$counter.css("opacity","0");
-            setTimeout(function(){
+            setTimeout(()=>{
               self.$submit.show('slow');
             },1500);
 
@@ -132,44 +134,44 @@
           this.countDown();
         }
       },
-      checkResult:  function (){
+      checkResult: function() {
         this.$submit.hide();
-        var self = this;
+        let self = this;
         this.ct = 0;
         this.compareImages = [];
         this.startImages= [];
-        $('.result-boxes .box').each(function(){
+        $('.result-boxes .box').each(function() {
           self.src = $(this).find('img').attr('src').toString();
           self.compareImages.push(self.src);
         });
-        $('.start-boxes .box').each(function(){
+        $('.start-boxes .box').each(function() {
           self.src2 = $(this).find('img').attr('src').toString();
           self.startImages.push(self.src2);
         });
 
-        for (var i = 0; i < this.compareImages.length; ++i) {
+        for (let i = 0; i < this.compareImages.length; ++i) {
           if (this.compareImages[i] == this.startImages[i]){ 
             this.ct++;
           }
         } 
         if(this.ct == this.compareImages.length){
-          this.$result.empty().append('<span class = "correct">Congratulations!</span>');
-          setTimeout(function(){
+          this.$result.empty().append(`<span class = "correct">Congratulations!</span>`);
+          setTimeout(()=>{
             self.$result.empty(); 
             self.currentLevel++;
             self.$level.val(self.currentLevel);
             self.$start.trigger('click');
           },2000);
         }else{
-          this.$result.empty().append('<span class = "wrong">Sorry!</span>');
-          setTimeout(function(){ 
+          this.$result.empty().append(`<span class = "wrong">Sorry!</span>`);
+          setTimeout(()=>{ 
             self.currentLevel = 1;
             self.$level.val(self.currentLevel);
           },2000);  
         }
       },
-      startGame:  function (){ 
-        var self = this;
+      startGame: function() { 
+        let self = this;
         $(this).prop("disabled","true");
         this.$submit.prop('disabled', "");
         this.$submit.hide('slow');
@@ -187,11 +189,11 @@
         this.finalImages = this.shuffle(this.images);
         this.insertBox();
         this.sec = this.counter;
-        this.count = setInterval(function(){self.timer()},1000);
+        this.count = setInterval(()=>{self.timer()},1000);
       }
     }
-    //$(window).on("load", function(){
-    app.init();
+    //$(window).on("load", ()=>{
+      app.init();
     //});
   });
 })();
