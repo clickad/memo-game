@@ -1,2 +1,2 @@
-# memo-game-2
+# memo-game
 Simple html, css, jquery game
