@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Memo game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class = "header">
+        <div class = "options">
+          <label class = "level-label" for = "level">level: </label>
+          <select  class = "level" id = "level">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">5</option>
+          </select>
+          <button class = "start">START</button>
+        </div>
+        <div class = "counter">
+          <!-- counter -->
+        </div>
+      </div>
+      <div class = "content">
+        <div class = "start-text">
+          <h2 class = "title">
+            Choose level and click start!
+          </h2>
+          <p class = "intro">
+            You will see some images in particular order for limited time to memorize it. Then the images will be shuffled and your 
+            task is to sort the images as they were before. Good luck!
+          </p>
+        </div>
+        <div class = "wrapper">
+          <div class = "start-boxes">
+            <!-- start boxes -->
+          </div>
+          <div class = "result-boxes">
+            <!-- result boxes -->
+          </div>
+        </div>
+        <div class = "result"></div>
+        <button class= "submit">submit</button>
+      </div>
+      <footer class = "footer">
+      </footer>
+    </div>
+    <script src="js/touch.js"></script>
+    <script src="bundle.js"></script>
+  </body>
+</html>
